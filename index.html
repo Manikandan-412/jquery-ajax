@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            position: relative;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+<h1 id="text">hello world</h1>
+
+<div id="box"></div>
+<button id="hide">hide</button>
+<button id="show">show</button>
+<button id="fade">fade</button>
+<button id="btn">animate</button>
+<script>
+
+//  $(document).ready(()=>{
+//     $('#hide').click(function(){
+//         $('#text').hide();
+//     });
+//  });
+
+//  $(document).ready(()=>{
+//     $('#show').dblclick(function(){
+//         $('#text').show();
+//     });
+//  });
+
+//  $(document).ready(()=>{
+//     $('#fade').keypress(function(){
+//         $('#text').slideToggle();
+//     });
+//  });
+
+$("#btn").click(function() {
+    $("#box").animate({left: '250px', opacity: '0.5'},4000);
+});
+
+</script>
+</body>
+
+</html>

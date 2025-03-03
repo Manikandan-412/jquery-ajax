@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX POST Request</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Create User</h2>
+    <form id="userForm">
+        <label>First Name:</label>
+        <input type="text" id="name"><br><br>
+
+        <label>Age:</label>
+        <input type="number" id="age"><br><br>
+
+        <label>Email:</label>
+        <input type="email" id="email"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script>
+        $("#userForm").submit(function (event) {
+            event.preventDefault(); // Prevent page reload
+
+            // Get form data
+            let userData = {
+                name: $("#name").val(),
+                age: $("#age").val(),
+                email: $("#email").val()
+            };
+
+            console.log(userData);   // prints user data
+            $.ajax({
+                url: "http://localhost:5000/users/upload",  // our api
+                method: "POST", // useage of api 
+                dataType: "json", // data type
+                data: userData, // which data go 
+                success: function (response) {
+                    alert("user added success fully");  // if success  
+                },
+                error: function (response) {
+                    alert("user creation failed!");
+                    console.log("Error: " + response.status); // if failes
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+<!-- http://localhost:5000/users/upload -->
