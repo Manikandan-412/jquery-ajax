@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <button id="button">clickme</button>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>TITLE</th>
+                <th>DODY</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(() => {
+            // $("#button").click(
+                // () => {
+
+                    $.ajax({
+                        url: "https://jsonplaceholder.typicode.com/posts",
+                        method: "GET",
+                        success: (response) => {
+
+                            let tableBody = $("#dataTable tbody");
+
+                            $.each(response.slice(0,5), (index, post) => {
+                                tableBody.append(
+                                    `
+                                    <tr>
+                                        <td>${post.id}</td>
+                                        <td>${post.title}</td>
+                                        <td>${post.body}</td>
+                                        </tr>
+                                      `
+                                );
+                            })
+                        },
+                        error: () => {
+                            alert("error loding data!")
+                            console.log(error);
+                        }
+                    }
+                    )
+                // })
+        })
+    </script>
+</body>
+
+</html>
